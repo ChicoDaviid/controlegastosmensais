@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import ttk, messagebox
 import pandas as pd
 
-# Função para adicionar um gasto
+# funcao para adicionar um gasto
 def adicionar_gasto():
     data = entrada_data.get()
     descricao = entrada_descricao.get()
@@ -28,7 +28,7 @@ def adicionar_gasto():
     entrada_pagamento.delete(0, tk.END)
     entrada_valor.delete(0, tk.END)
 
-# Função para apagar um gasto
+# funcao para apagar um gasto
 def apagar_gasto():
     selecionado = tabela.selection()
     if not selecionado:
@@ -38,7 +38,7 @@ def apagar_gasto():
         tabela.delete(item)
     messagebox.showinfo("Sucesso", "Gasto removido com sucesso!")
 
-# Função para salvar os dados em Excel
+# funcao para salvar os dados em Excel
 def salvar_excel():
     items = tabela.get_children()
     if not items:
@@ -56,11 +56,11 @@ def salvar_excel():
     except Exception as e:
         messagebox.showerror("Erro", f"Erro ao salvar o arquivo: {e}")
 
-# Criar janela principal
+# criar janela principal
 janela = tk.Tk()
 janela.title("Controle de Gastos Mensais")
 
-# Layout
+# layout
 tk.Label(janela, text="Data (dd/mm/aaaa):").grid(row=0, column=0, padx=10, pady=5)
 entrada_data = tk.Entry(janela)
 entrada_data.grid(row=0, column=1, padx=10, pady=5)
@@ -84,7 +84,7 @@ entrada_valor.grid(row=4, column=1, padx=10, pady=5)
 btn_adicionar = tk.Button(janela, text="Adicionar Gasto", command=adicionar_gasto)
 btn_adicionar.grid(row=5, column=0, columnspan=2, pady=10)
 
-# Tabela para exibir os gastos
+# tabela para exibir os gastos
 colunas = ["Data", "Descrição", "Categoria", "Forma de Pagamento", "Valor"]
 tabela = ttk.Treeview(janela, columns=colunas, show="headings")
 for col in colunas:
@@ -98,5 +98,5 @@ btn_salvar.grid(row=7, column=0, columnspan=2, pady=10)
 btn_apagar = tk.Button(janela, text="Apagar Gasto", command=apagar_gasto)
 btn_apagar.grid(row=8, column=0, columnspan=2, pady=10)
 
-# Iniciar aplicação
+# iniciar aplicação
 janela.mainloop()
